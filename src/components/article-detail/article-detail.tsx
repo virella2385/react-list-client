@@ -13,20 +13,24 @@ const ArticleDetail = () => {
         fetch(`http://localhost:8000/${params.externalArticleId}`)
             .then((resp) => resp.text())
             .then((data) => {
-                console.debug(data);
                 setLoading(false);
-                setDetail(data);
+                if (data) {
+                    setDetail(data);
+                }
             })
-            .catch((err) => console.error(err.message));
+            .catch((err) => {
+                setLoading(false);
+                console.error(err.message);
+            });
     }, [params.externalArticleId]);
 
     return (
         <Container>
 
             <div>
-                {(!loading && parse(detail)) 
+                {(!loading && (detail && parse(detail))) 
                     || (loading && <>Loading details...<Spinner animation="border" variant="primary" /></>) 
-                    || (!loading && !detail && "No article data yet. Check back later!")}
+                    || (!loading && (!detail || detail == '') && "No article data yet. Check back later!")}
             </div>
             <Link to="/">Back to the List</Link>
         </Container>
