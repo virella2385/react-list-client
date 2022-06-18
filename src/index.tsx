@@ -15,10 +15,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
    <BrowserRouter>
+   <React.StrictMode>
     <Routes>
       <Route path="/" element={<ArticleList />} />
       <Route path=":externalArticleId" element={<ArticleDetail />} />
     </Routes>
+   </React.StrictMode>
   </BrowserRouter>
 );
 

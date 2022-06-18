@@ -10,7 +10,7 @@ const ArticleDetail = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/${params.externalArticleId}`)
+        fetch(`http://localhost:8000/article/${params.externalArticleId}`)
             .then((resp) => resp.text())
             .then((data) => {
                 setLoading(false);
@@ -30,7 +30,7 @@ const ArticleDetail = () => {
             <div>
                 {(!loading && (detail && parse(detail))) 
                     || (loading && <>Loading details...<Spinner animation="border" variant="primary" /></>) 
-                    || (!loading && (!detail || detail == '') && "No article abstract yet. Check back later!")}
+                    || (!loading && (!detail || detail === '') && "No article abstract yet. Check back later!")}
             </div>
             <Link to="/">Back to the List</Link>
         </Container>
