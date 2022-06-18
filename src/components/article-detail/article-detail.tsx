@@ -30,7 +30,7 @@ const ArticleDetail = () => {
             <div>
                 {(!loading && (detail && parse(detail))) 
                     || (loading && <>Loading details...<Spinner animation="border" variant="primary" /></>) 
-                    || (!loading && (!detail || detail == '') && "No article data yet. Check back later!")}
+                    || (!loading && (!detail || detail == '') && "No article abstract yet. Check back later!")}
             </div>
             <Link to="/">Back to the List</Link>
         </Container>
